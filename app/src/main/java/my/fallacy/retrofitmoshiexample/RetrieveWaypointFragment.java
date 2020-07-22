@@ -46,17 +46,27 @@ public class RetrieveWaypointFragment extends Fragment {
         tvParsedResponse = root.findViewById(R.id.tvParsedResponse);
         tvSpecific = root.findViewById(R.id.tvSpecific);
 
+        setDefaultAttr();
+    }
+
+    private void setDefaultAttr() {
         efabCallApi.setOnClickListener(v -> onCallApiWaypointAiramap());
         tvRequest.setMovementMethod(new ScrollingMovementMethod());
         tvRawResponse.setMovementMethod(new ScrollingMovementMethod());
         tvParsedResponse.setMovementMethod(new ScrollingMovementMethod());
         tvSpecific.setMovementMethod(new ScrollingMovementMethod());
+        tvRequest.setTextIsSelectable(true);
+        tvRawResponse.setTextIsSelectable(true);
+        tvParsedResponse.setTextIsSelectable(true);
+        tvSpecific.setTextIsSelectable(true);
+
+        tvRequest.setText(R.string.api_retrieveWpAiramap);
     }
 
     private void onCallApiWaypointAiramap() {
         onLoad();
         Endpoint endpoint = ApiBuilder.getRetrofitJsonInstance().create(Endpoint.class);
-        Call<String> call = endpoint.retrieveWaypointsAiramap();
+        Call<String> call = endpoint.get(getString(R.string.api_retrieveWpAiramap));
 
         call.enqueue(new retrofit2.Callback<String>() {
             @Override
