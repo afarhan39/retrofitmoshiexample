@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_userdata">
+
+    <fragment
+        android:id="@+id/nav_userdata"
+        android:name="my.fallacy.retrofitmoshiexample.UserDataFragment"
+        android:label="@string/menu_userdata"
+        tools:layout="@layout/fragment_base" />
+
+    <fragment
+        android:id="@+id/nav_retrievewaypoint"
+        android:name="my.fallacy.retrofitmoshiexample.RetrieveWaypointFragment"
+        android:label="@string/menu_retrievewp"
+        tools:layout="@layout/fragment_base" />
+</navigation>
