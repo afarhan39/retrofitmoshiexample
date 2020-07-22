@@ -6,4 +6,12 @@
 
     <string name="menu_userdata">User Data</string>
     <string name="menu_retrievewp">Retrieve Waypoints</string>
+
+    <string name="btn_callapi">Call API</string>
+    <string name="btn_callapitryagain">Failed. Try again?</string>
+    <string name="btn_loading">Loading…</string>
+    <string name="label_req">Request URL and Body</string>
+    <string name="label_res_raw">Response Raw String</string>
+    <string name="label_res_object">Parsed Response</string>
+    <string name="label_res_specific">Specific Object</string>
 </resources>
