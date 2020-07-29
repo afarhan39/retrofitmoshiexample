@@ -7,6 +7,8 @@
     <string name="menu_userdata">User Data</string>
     <string name="menu_retrievewpSuccess">Retrieve Waypoints Success</string>
     <string name="menu_retrievewpFailed">Retrieve Waypoints Failed</string>
+    <string name="menu_updateHandShakeSuccess">Update Handshake Success</string>
+    <string name="menu_updateHandShakeFailed">Update Handshake Failed</string>
     <string name="menu_retrievewpNotFound">Retrieve Waypoints Not Found</string>
     <string name="menu_auth">Auth</string>
 
@@ -25,4 +27,5 @@
     <string name="api_retrieveWpAiramapNotFound">https://airamapv093.azurewebsites.net/Oryctes/Retrieve?token=LVRxVEb39BkOqiwh6Gq6uGqU46S7jCJmx0c9dvzfUTM=</string>
     <string name="api_retrieveWpAiramapFailed">https://airamapv093.azurewebsites.net/Oryctes/Retrieve?token=x3TKgxyb0uX5c4kwmwbdLAv96pbxXr/JCHfBV53Fc2Y=a</string>
     <string name="api_authAiramap">https://airamapv093.azurewebsites.net/Oryctes/Auth?uuid=5643bfc7-cec0-4977-be25-bbf36f41aa2a</string>
+    <string name="api_updateHandshake">https://airamapv093.azurewebsites.net/Oryctes/UpdateHandShake</string>
 </resources>
