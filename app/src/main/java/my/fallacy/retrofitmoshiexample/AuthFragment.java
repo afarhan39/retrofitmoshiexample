@@ -18,12 +18,13 @@ import java.io.IOException;
 import java.util.Map;
 
 import my.fallacy.okhttpmoshiexample.R;
+import my.fallacy.retrofitmoshiexample.auth.ResAuth;
 import my.fallacy.retrofitmoshiexample.retrievewp.ResMission;
 import my.fallacy.retrofitmoshiexample.retrievewp.ResRetrieveWps;
 import my.fallacy.retrofitmoshiexample.retrievewp.RetrieveWpsAdapter;
 import retrofit2.Call;
 
-public class RetrieveWaypointFragment extends Fragment {
+public class AuthFragment extends Fragment {
     private ExtendedFloatingActionButton efabCallApi;
     private TextView tvRequest;
     private TextView tvRawResponse;
@@ -50,7 +51,7 @@ public class RetrieveWaypointFragment extends Fragment {
     }
 
     private void setDefaultAttr() {
-        efabCallApi.setOnClickListener(v -> onCallApiWaypointAiramap());
+        efabCallApi.setOnClickListener(v -> onCallAuthAiramap());
         tvRequest.setMovementMethod(new ScrollingMovementMethod());
         tvRawResponse.setMovementMethod(new ScrollingMovementMethod());
         tvParsedResponse.setMovementMethod(new ScrollingMovementMethod());
@@ -60,13 +61,13 @@ public class RetrieveWaypointFragment extends Fragment {
         tvParsedResponse.setTextIsSelectable(true);
         tvSpecific.setTextIsSelectable(true);
 
-        tvRequest.setText(R.string.api_retrieveWpAiramap);
+        tvRequest.setText(R.string.api_authAiramap);
     }
 
-    private void onCallApiWaypointAiramap() {
+    private void onCallAuthAiramap() {
         onLoad();
         Endpoint endpoint = ApiBuilder.getRetrofitJsonInstance().create(Endpoint.class);
-        Call<String> call = endpoint.get(getString(R.string.api_retrieveWpAiramap));
+        Call<String> call = endpoint.get(getString(R.string.api_authAiramap));
 
         call.enqueue(new retrofit2.Callback<String>() {
             @Override
@@ -75,7 +76,7 @@ public class RetrieveWaypointFragment extends Fragment {
                 String resString = response.body();
                 tvRawResponse.setText(resString);
 
-                parseAiramapEndoindEncoded(resString);
+                parseAuthAiramap(resString);
             }
 
             @Override
@@ -85,18 +86,14 @@ public class RetrieveWaypointFragment extends Fragment {
         });
     }
 
-    private void parseAiramapEndoindEncoded(String resString) {
-        Moshi moshi = new Moshi.Builder().add(new RetrieveWpsAdapter()).build();
-        JsonAdapter<ResRetrieveWps> jsonAdapter = moshi.adapter(ResRetrieveWps.class);
+    private void parseAuthAiramap(String resString) {
+        Moshi moshi = new Moshi.Builder().build();
+        JsonAdapter<ResAuth> jsonAdapter = moshi.adapter(ResAuth.class);
 
         try {
-            ResRetrieveWps res = jsonAdapter.fromJson(resString);
-            tvParsedResponse.setText(res.toString());
-
-            for (Map.Entry<String, ResMission> entry: res.getResMissionSortedMap().entrySet()) {
-                if (entry.getKey().equals("0"))
-                    tvSpecific.setText(entry.getValue().getWaypointMap().toString());
-            }
+            ResAuth resAuth = jsonAdapter.fromJson(resString);
+            tvParsedResponse.setText(resAuth.toString());
+            tvSpecific.setText(resAuth.getAuth());
         } catch (IOException e) {
             resetFab();
             tvParsedResponse.setText(e.getMessage());

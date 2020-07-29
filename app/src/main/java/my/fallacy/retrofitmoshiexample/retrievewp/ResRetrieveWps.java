@@ -1,4 +1,4 @@
-package my.fallacy.retrofitmoshiexample.airamap;
+package my.fallacy.retrofitmoshiexample.retrievewp;
 
 import com.squareup.moshi.Json;
 

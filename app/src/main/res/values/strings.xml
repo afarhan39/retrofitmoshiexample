@@ -6,6 +6,7 @@
 
     <string name="menu_userdata">User Data</string>
     <string name="menu_retrievewp">Retrieve Waypoints</string>
+    <string name="menu_auth">Auth</string>
 
     <string name="btn_callapi">Call API</string>
     <string name="btn_callapitryagain">Failed. Try again?</string>
@@ -19,4 +20,5 @@
     <string name="api_userData">https://afarhan.free.beeceptor.com/requestUserData</string>
     <string name="api_userDataEncoded">https://afarhan.free.beeceptor.com/requestUserDataEncode</string>
     <string name="api_retrieveWpAiramap">https://airamapv093.azurewebsites.net/Oryctes/Retrieve?token=x3TKgxyb0uX5c4kwmwbdLAv96pbxXr/JCHfBV53Fc2Y=</string>
+    <string name="api_authAiramap">https://airamapv093.azurewebsites.net/Oryctes/Auth?uuid=5643bfc7-cec0-4977-be25-bbf36f41aa2a</string>
 </resources>

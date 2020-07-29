@@ -1,10 +1,9 @@
-package my.fallacy.retrofitmoshiexample.airamap;
+package my.fallacy.retrofitmoshiexample.retrievewp;
 
 import com.squareup.moshi.Json;
 
 import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
 
 public class ResMission {
 
