@@ -30,9 +30,12 @@ public class ResRetrieveWps {
 	@Override
 	public String toString() {
 		StringBuilder map = new StringBuilder();
-		for (String key : resMissionSortedMap.keySet()) {
-			map.append(key).append("=").append(resMissionSortedMap.get(key));
+
+		if (resMissionSortedMap != null) {
+			for (String key : resMissionSortedMap.keySet())
+				map.append(key).append("=").append(resMissionSortedMap.get(key));
 		}
+
 
 		return "ResRetrieveWps{" +
 				"resMissionSortedMap=" + map.toString() +

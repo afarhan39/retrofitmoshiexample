@@ -8,8 +8,14 @@
             android:id="@+id/nav_userdata"
             android:title="@string/menu_userdata" />
         <item
-            android:id="@+id/nav_retrievewaypoint"
-            android:title="@string/menu_retrievewp" />
+            android:id="@+id/nav_retrievewaypointSuccess"
+            android:title="@string/menu_retrievewpSuccess" />
+        <item
+            android:id="@+id/nav_retrievewaypointFail"
+            android:title="@string/menu_retrievewpFailed" />
+        <item
+            android:id="@+id/nav_retrievewaypointNotFound"
+            android:title="@string/menu_retrievewpNotFound" />
         <item
             android:id="@+id/nav_auth"
             android:title="@string/menu_auth" />

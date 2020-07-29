@@ -12,10 +12,37 @@
         tools:layout="@layout/fragment_base" />
 
     <fragment
-        android:id="@+id/nav_retrievewaypoint"
+        android:id="@+id/nav_retrievewaypointSuccess"
         android:name="my.fallacy.retrofitmoshiexample.RetrieveWaypointFragment"
-        android:label="@string/menu_retrievewp"
-        tools:layout="@layout/fragment_base" />
+        android:label="@string/menu_retrievewpSuccess"
+        tools:layout="@layout/fragment_base" >
+        <argument
+            android:name="url"
+            app:argType="reference"
+            android:defaultValue="@string/api_retrieveWpAiramapSuccess"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_retrievewaypointFail"
+        android:name="my.fallacy.retrofitmoshiexample.RetrieveWaypointFragment"
+        android:label="@string/menu_retrievewpFailed"
+        tools:layout="@layout/fragment_base" >
+        <argument
+            android:name="url"
+            app:argType="reference"
+            android:defaultValue="@string/api_retrieveWpAiramapFailed"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_retrievewaypointNotFound"
+        android:name="my.fallacy.retrofitmoshiexample.RetrieveWaypointFragment"
+        android:label="@string/menu_retrievewpNotFound"
+        tools:layout="@layout/fragment_base" >
+        <argument
+            android:name="url"
+            app:argType="reference"
+            android:defaultValue="@string/api_retrieveWpAiramapNotFound"/>
+    </fragment>
 
     <fragment
         android:id="@+id/nav_auth"

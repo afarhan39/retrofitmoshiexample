@@ -12,7 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.JsonDataException;
 import com.squareup.moshi.Moshi;
+
+import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.Map;
@@ -29,12 +32,14 @@ public class RetrieveWaypointFragment extends Fragment {
     private TextView tvRawResponse;
     private TextView tvParsedResponse;
     private TextView tvSpecific;
+    private String url;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_base, container, false);
+        url = getString((Integer) getArguments().get("url"));
         bindId(root);
         return root;
     }
@@ -60,13 +65,13 @@ public class RetrieveWaypointFragment extends Fragment {
         tvParsedResponse.setTextIsSelectable(true);
         tvSpecific.setTextIsSelectable(true);
 
-        tvRequest.setText(R.string.api_retrieveWpAiramap);
+        tvRequest.setText(url);
     }
 
     private void onCallApiWaypointAiramap() {
         onLoad();
         Endpoint endpoint = ApiBuilder.getRetrofitJsonInstance().create(Endpoint.class);
-        Call<String> call = endpoint.get(getString(R.string.api_retrieveWpAiramap));
+        Call<String> call = endpoint.get(url);
 
         call.enqueue(new retrofit2.Callback<String>() {
             @Override
@@ -93,11 +98,15 @@ public class RetrieveWaypointFragment extends Fragment {
             ResRetrieveWps res = jsonAdapter.fromJson(resString);
             tvParsedResponse.setText(res.toString());
 
-            for (Map.Entry<String, ResMission> entry: res.getResMissionSortedMap().entrySet()) {
-                if (entry.getKey().equals("0"))
-                    tvSpecific.setText(entry.getValue().getWaypointMap().toString());
-            }
-        } catch (IOException e) {
+            if (res.getStatus() == 200) {
+                for (Map.Entry<String, ResMission> entry: res.getResMissionSortedMap().entrySet()) {
+                    if (entry.getKey().equals("0"))
+                        tvSpecific.setText(entry.getValue().getWaypointMap().toString());
+                }
+            } else
+                tvSpecific.setText("some error");
+
+        } catch (IOException | JsonDataException e) {
             resetFab();
             tvParsedResponse.setText(e.getMessage());
             tvSpecific.setText(e.getMessage());
